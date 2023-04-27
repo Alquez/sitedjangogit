@@ -170,4 +170,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jannat.beau@gmail.com'
 EMAIL_HOST_PASSWORD = 'nrbahlclnhmycpwk'
-EMAIL_USE_TLS = True
+# EMAIL_USE_TLS = True
