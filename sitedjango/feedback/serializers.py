@@ -19,4 +19,4 @@ class FeedbackSerializer(serializers.ModelSerializer):
             phone = '+' + phone
         if not phone[1:].isdigit():
             raise serializers.ValidationError('Некорректный номер телефона')
-        return phone
+        return

@@ -16,12 +16,22 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+class Tournament(models.Model):
+    sport_type = models.ForeignKey(SportType, on_delete=models.CASCADE, blank=True)
+    name = models.CharField()
+    GENDER_CHOICES = (
+        ('м', 'Мужской'),
+        ('ж', 'Женский'),
+    )
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
+    def __str__(self):
+        return f"{self.sport_type}   {self.name}   {self.gender}"
 
 class Match(models.Model):
-    name = models.CharField(blank=True)
     url = models.URLField(blank=True)
-    date = models.DateField(blank=True, null=True)
-    time = models.TimeField(blank=True, null=True)
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
+    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
     team_one = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team_one',blank=False)
     team_two = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team_two',blank=False)
     sport_type = models.ForeignKey(SportType, on_delete=models.CASCADE)
